@@ -16,7 +16,7 @@ public class Curriculum extends PanacheEntity {
   private Course course;
 
   @OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Subject> subjects;
+  private List<Semester> semesters;
 
   public Curriculum() {
   }
@@ -46,11 +46,11 @@ public class Curriculum extends PanacheEntity {
     this.course = course;
   }
 
-  public List<Subject> getSubjects() {
-    return subjects;
+  public List<Semester> getSemesters() {
+    return semesters;
   }
 
-  public void setSubjects(List<Subject> subjects) {
-    this.subjects = subjects;
+  public void setSubjects(List<Semester> semesters) {
+    this.semesters = semesters;
   }
 }

@@ -3,10 +3,10 @@ package service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import repository.CurriculumRepository;
+import repository.SemesterRepository;
 import repository.SubjectRepository;
 import model.Subject;
-import model.Curriculum;
+import model.Semester;
 import dto.subject.SubjectRequestDTO;
 import dto.subject.SubjectResponseDTO;
 
@@ -20,18 +20,18 @@ public class SubjectService {
   SubjectRepository subjectRepository;
 
   @Inject
-  CurriculumRepository curriculumRepository;
+  SemesterRepository semesterRepository;
 
   @Transactional
   public SubjectResponseDTO addSubject(SubjectRequestDTO dto) {
-    Curriculum curriculum = curriculumRepository.findById(dto.curriculumId);
-    if (curriculum == null)
+    Semester semester = semesterRepository.findById(dto.semesterId);
+    if (semester == null)
       return null;
 
     Subject subject = new Subject();
     subject.setName(dto.name);
     subject.setHours(dto.hours);
-    subject.setCurriculum(curriculum);
+    subject.setSemester(semester);
 
     subjectRepository.persist(subject);
     return SubjectResponseDTO.fromEntity(subject);
@@ -48,13 +48,13 @@ public class SubjectService {
     if (subject == null)
       return null;
 
-    Curriculum curriculum = curriculumRepository.findById(dto.curriculumId);
-    if (curriculum == null)
+    Semester semester = semesterRepository.findById(dto.semesterId);
+    if (semester == null)
       return null;
 
     subject.setName(dto.name);
     subject.setHours(dto.hours);
-    subject.setCurriculum(curriculum);
+    subject.setSemester(semester);
 
     return SubjectResponseDTO.fromEntity(subject);
   }

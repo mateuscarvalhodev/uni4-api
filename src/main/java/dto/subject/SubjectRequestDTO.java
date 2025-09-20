@@ -10,6 +10,6 @@ public class SubjectRequestDTO {
   @NotNull(message = "Hours are required")
   public Integer hours;
 
-  @NotNull(message = "Curriculum ID is required")
-  public Long curriculumId;
+  @NotNull(message = "Semester ID is required")
+  public Long semesterId;
 }

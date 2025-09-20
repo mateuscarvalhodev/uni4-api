@@ -11,16 +11,16 @@ public class Subject extends PanacheEntity {
   private Integer hours;
 
   @ManyToOne
-  @JoinColumn(name = "curriculum_id", nullable = false)
-  private Curriculum curriculum;
+  @JoinColumn(name = "semester_id", nullable = false)
+  private Semester semester;
 
   public Subject() {
   }
 
-  public Subject(String name, Integer hours, Curriculum curriculum) {
+  public Subject(String name, Integer hours, Semester semester) {
     this.name = name;
     this.hours = hours;
-    this.curriculum = curriculum;
+    this.semester = semester;
   }
 
   public Long getId() {
@@ -43,11 +43,11 @@ public class Subject extends PanacheEntity {
     this.hours = hours;
   }
 
-  public Curriculum getCurriculum() {
-    return curriculum;
+  public Semester getSemester() {
+    return semester;
   }
 
-  public void setCurriculum(Curriculum curriculum) {
-    this.curriculum = curriculum;
+  public void setSemester(Semester semester) {
+    this.semester = semester;
   }
 }
