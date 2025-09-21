@@ -12,7 +12,7 @@
   "users": [
     {
       "username": "admin1",
-      "email": "admin@school.com",
+      "email": "admin@uni4.com",
       "enabled": true,
       "emailVerified": true,
       "firstName": "Administrador",
@@ -28,7 +28,7 @@
     },
     {
       "username": "coordenador1",
-      "email": "coordenador@school.com",
+      "email": "coordenador@uni4.com",
       "enabled": true,
       "credentials": [
         { "type": "password", "value": "123456", "temporary": false }
@@ -37,7 +37,7 @@
     },
     {
       "username": "professor1",
-      "email": "professor@school.com",
+      "email": "professor@uni4.com",
       "enabled": true,
       "credentials": [
         { "type": "password", "value": "123456", "temporary": false }
@@ -46,7 +46,7 @@
     },
     {
       "username": "aluno1",
-      "email": "aluno@school.com",
+      "email": "aluno@uni4.com",
       "enabled": true,
       "credentials": [
         { "type": "password", "value": "123456", "temporary": false }

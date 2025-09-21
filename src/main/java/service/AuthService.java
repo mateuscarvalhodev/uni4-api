@@ -33,7 +33,7 @@ public class AuthService {
   @ConfigProperty(name = "quarkus.oidc.credentials.secret")
   String CLIENT_SECRET;
 
-  @ConfigProperty(name = "quarkus.oidc.auth-server-base-url")
+  @ConfigProperty(name = "keycloak.base-url")
   String BASE_URL;
 
 

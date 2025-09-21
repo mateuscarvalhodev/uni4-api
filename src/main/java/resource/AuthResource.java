@@ -37,7 +37,7 @@ public class AuthResource {
 
   @POST
   @Path("/register")
-  @RolesAllowed({ "admin", "administrador" })
+  @RolesAllowed( "administrador")
   public Response createUser(UserCreateRequest request) {
     UserCreateResponse user = authService.createUser(request);
     return Response.status(Response.Status.CREATED).entity(user).build();
