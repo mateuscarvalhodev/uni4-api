@@ -1,58 +1,64 @@
-# uni4-api
+# 📘 Projeto: API Escolar (Quarkus + Keycloak)
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## 🚀 Stack
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+- **Java 21**
+- **Quarkus** (RESTEasy + OIDC)
+- **Keycloak** (autenticação e autorização)
+- **PostgreSQL** (persistência da aplicação)
+- **Docker Compose** (opcional para subir Keycloak e banco)
 
-## Running the application in dev mode
+---
 
-You can run your application in dev mode that enables live coding using:
+## 🔐 Autenticação e Autorização
 
-```shell script
-./mvnw quarkus:dev
+- **Keycloak** é o _Identity Provider (IdP)_ central.
+- Um **realm** único: `school-realm`.
+- Roles criadas:
+  - `administrador`
+  - `coordenador`
+  - `professor`
+  - `aluno`
+- API protegida com **JWT** emitido pelo Keycloak.
+- Controle de acesso feito via `@RolesAllowed`.
+
+Exemplo:
+
+```java
+@GET
+@Path("/admin")
+@RolesAllowed({"administrador"})
+public String adminOnly() {
+    return "Acesso restrito para administradores!";
+}
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+## ▶️ Como usar
 
-## Packaging and running the application
+### 1. Entrar na pasta `database`
 
-The application can be packaged using:
+Acesse a pasta que contém o `docker-compose.yml`:
 
-```shell script
-./mvnw package
+```bash
+cd database
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+### 2. Rode o docker
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+Isso irá rodar o container do keycloaker com o postgres.
 
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+```bash
+docker compose up -d
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+### 3. Volte a pasta do projeto
 
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
+```bash
+cd ..
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+### 3. Rode a aplicação
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+```bash
+& ./mvnw.cmd quarkus:dev -f ./pom.xml
 ```
-
-You can then execute your native executable with: `./target/uni4-api-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it

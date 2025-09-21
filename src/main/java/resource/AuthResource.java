@@ -9,6 +9,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.annotation.security.RolesAllowed;
 import service.AuthService;
 
 @Path("/auth")
@@ -36,6 +37,7 @@ public class AuthResource {
 
   @POST
   @Path("/register")
+  @RolesAllowed({ "admin", "administrador" })
   public Response createUser(UserCreateRequest request) {
     UserCreateResponse user = authService.createUser(request);
     return Response.status(Response.Status.CREATED).entity(user).build();
