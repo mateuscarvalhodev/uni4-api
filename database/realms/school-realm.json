@@ -3,16 +3,24 @@
   "enabled": true,
   "roles": {
     "realm": [
-      { "name": "administrador" },
-      { "name": "coordenador" },
-      { "name": "professor" },
-      { "name": "aluno" }
+      {
+        "name": "administrador"
+      },
+      {
+        "name": "coordenador"
+      },
+      {
+        "name": "professor"
+      },
+      {
+        "name": "aluno"
+      }
     ]
   },
   "users": [
     {
       "username": "admin1",
-      "email": "admin@uni4.com",
+      "email": "admin@school.com",
       "enabled": true,
       "emailVerified": true,
       "firstName": "Administrador",
@@ -28,28 +36,49 @@
     },
     {
       "username": "coordenador1",
-      "email": "coordenador@uni4.com",
+      "email": "coordenador@school.com",
+      "emailVerified": true,
+      "firstName": "Coordenador",
+      "lastName": "Sistema",
       "enabled": true,
       "credentials": [
-        { "type": "password", "value": "123456", "temporary": false }
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
       ],
       "realmRoles": ["coordenador"]
     },
     {
       "username": "professor1",
-      "email": "professor@uni4.com",
+      "email": "professor@school.com",
+      "emailVerified": true,
+      "firstName": "Professor",
+      "lastName": "Sistema",
       "enabled": true,
       "credentials": [
-        { "type": "password", "value": "123456", "temporary": false }
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
       ],
       "realmRoles": ["professor"]
     },
     {
       "username": "aluno1",
-      "email": "aluno@uni4.com",
+      "email": "aluno@school.com",
+      "emailVerified": true,
+      "firstName": "Aluno",
+      "lastName": "Sistema",
       "enabled": true,
       "credentials": [
-        { "type": "password", "value": "123456", "temporary": false }
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
       ],
       "realmRoles": ["aluno"]
     }
