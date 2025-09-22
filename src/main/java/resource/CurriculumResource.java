@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.annotation.security.RolesAllowed;
 import service.CurriculumService;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class CurriculumResource {
   CurriculumService curriculumService;
 
   @POST
+
   public Response addCurriculum(@Valid CurriculumRequestDTO dto) {
     CurriculumResponseDTO created = curriculumService.addCurriculum(dto);
     if (created == null) {
@@ -57,6 +59,8 @@ public class CurriculumResource {
 
   @PUT
   @Path("/{id}")
+  @RolesAllowed("coordenador")
+
   public Response editCurriculum(@PathParam("id") Long id, @Valid CurriculumRequestDTO dto) {
     CurriculumResponseDTO curriculum = curriculumService.editCurriculum(id, dto);
     if (curriculum == null) {
@@ -67,6 +71,8 @@ public class CurriculumResource {
 
   @DELETE
   @Path("/{id}")
+  @RolesAllowed("coordenador")
+
   public Response deleteCurriculum(@PathParam("id") Long id) {
     boolean deleted = curriculumService.deleteCurriculum(id);
     if (!deleted) {

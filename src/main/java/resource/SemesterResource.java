@@ -8,6 +8,7 @@ import jakarta.ws.rs.core.Response;
 import service.SemesterService;
 import dto.Semester.SemesterRequestDTO;
 import dto.Semester.SemesterResponseDTO;
+import jakarta.annotation.security.RolesAllowed;
 
 import java.util.List;
 

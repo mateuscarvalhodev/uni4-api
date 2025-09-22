@@ -8,12 +8,14 @@ import jakarta.ws.rs.core.Response;
 import dto.subject.SubjectRequestDTO;
 import dto.subject.SubjectResponseDTO;
 import service.SubjectService;
+import jakarta.annotation.security.RolesAllowed;
 
 import java.util.List;
 
 @Path("/subjects")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+
 public class SubjectResource {
 
   @Inject

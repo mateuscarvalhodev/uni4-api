@@ -24,7 +24,6 @@ public class AuthResource {
   @Path("/login")
   public Response login(UserLoginRequest request) {
     UserLoginResponse tokens = authService.login(request);
-    System.out.println("Keycloak response: " + tokens);
     return Response.ok(tokens).build();
   }
 
